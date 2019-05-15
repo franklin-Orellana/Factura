@@ -1,22 +1,24 @@
 package ec.edu.ups.modelo;
+
 public class FacturaDetalle {
-private int codigo;
-private double precio;
-private int cantidad;
-private double subtotal;
-private Producto producto;
-private Factura factura;
+
+    private int codigo;
+    private double precio;
+    private int cantidad;
+    private double subtotal;
+    private Producto producto;
+    private int codfac;
 
     public FacturaDetalle() {
     }
 
-    public FacturaDetalle(int codigo, double precio, int cantidad, double subtotal, Producto producto, Factura factura) {
+    public FacturaDetalle(int codigo, double precio, int cantidad, double subtotal, Producto producto, int codfac) {
         this.codigo = codigo;
         this.precio = precio;
         this.cantidad = cantidad;
         this.subtotal = subtotal;
         this.producto = producto;
-        this.factura = factura;
+        this.codfac = codfac;
     }
 
     public int getCodigo() {
@@ -59,18 +61,17 @@ private Factura factura;
         this.producto = producto;
     }
 
-    public Factura getFactura() {
-        return factura;
+    public int getCodfac() {
+        return codfac;
     }
 
-    public void setFactura(Factura factura) {
-        this.factura = factura;
+    public void setCodfac(int codfac) {
+        this.codfac = codfac;
     }
 
     @Override
     public String toString() {
-        return "FacturaDetalle{" + "codigo=" + codigo + ", precio=" + precio + ", cantidad=" + cantidad + ", subtotal=" + subtotal + ", producto=" + producto + ", factura=" + factura + '}';
+        return "FacturaDetalle{" + "codigo=" + codigo + ", precio=" + precio + ", cantidad=" + cantidad + ", subtotal=" + subtotal + ", producto=" + producto + ", codfac=" + codfac + '}';
     }
 
-    
 }

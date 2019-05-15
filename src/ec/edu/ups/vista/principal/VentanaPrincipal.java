@@ -3,6 +3,7 @@ package ec.edu.ups.vista.principal;
 import ec.edu.ups.controladores.ControladorCliente;
 import ec.edu.ups.controladores.ControladorProducto;
 import ec.edu.ups.controladores.ControladorFactura;
+import ec.edu.ups.vista.factura.VentanaCrearFactura;
 import ec.edu.ups.modelo.Factura;
 import ec.edu.ups.modelo.Cliente;
 import ec.edu.ups.modelo.Producto;
@@ -11,8 +12,6 @@ import ec.edu.ups.vista.cliente.VentanaBuscarCliente;
 import ec.edu.ups.vista.cliente.VentanaCrearCliente;
 import ec.edu.ups.vista.cliente.VentanaEliminarCliente;
 import ec.edu.ups.vista.cliente.VentanaListarCliente;
-import ec.edu.ups.vista.factura.VentanaBuscarFactura;
-import ec.edu.ups.vista.factura.VentanaCrearFactura;
 import ec.edu.ups.vista.producto.VentanaActualizarProducto;
 import ec.edu.ups.vista.producto.VentanaBuscarProducto;
 import ec.edu.ups.vista.producto.VentanaCrearProducto;
@@ -412,9 +411,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void FbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FbuscarActionPerformed
         // TODO add your handling code here:
-        VentanaBuscarFactura buscarFactura = new VentanaBuscarFactura(controladorFactura);
-        buscarFactura.setVisible(true);
-        desktopPane.add(buscarFactura);
     }//GEN-LAST:event_FbuscarActionPerformed
 
     private void FactualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FactualizarActionPerformed

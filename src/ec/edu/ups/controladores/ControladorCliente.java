@@ -13,12 +13,7 @@ public class ControladorCliente {
     public ControladorCliente() {
         lista = new HashSet<>();
         codigo = 1;
-        contador = 1;
-    }
-
-    public int getContador() {
-        return contador;
-    }
+         }
     
     
     public int getCodigo() {
@@ -36,6 +31,14 @@ public class ControladorCliente {
             if (cliente.getCodigo() == codigo) {
                 return cliente;
             }
+        }
+        return null;
+    }
+    
+    public Cliente readCedula(String cedula){
+        for(Cliente cliente : lista){
+            if(cliente.getCedula().equals(cedula))
+                return cliente;
         }
         return null;
     }

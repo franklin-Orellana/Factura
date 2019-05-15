@@ -1,15 +1,15 @@
 package ec.edu.ups.controladores;
 
-import ec.edu.ups.modelo.Factura;
+import ec.edu.ups.modelo.FacturaDetalle;
 import java.util.HashSet;
 import java.util.Set;
 
-public class ControladorFactura {
+public class ControladorFacturaDetalle {
 
-    private Set<Factura> lista;
+    private Set<FacturaDetalle> lista;
     private int codigo;
 
-    public ControladorFactura() {
+    public ControladorFacturaDetalle() {
         lista = new HashSet<>();
         codigo = 1;
     }
@@ -19,14 +19,14 @@ public class ControladorFactura {
         return codigo;
     }
 
-    public void crear(Factura objeto) {
+    public void crear(FacturaDetalle objeto) {
         objeto.setCodigo(codigo);
         lista.add(objeto);
         codigo++;
     }
 
-    public Factura read(int codigo) {
-        for (Factura factura : lista) {
+    public FacturaDetalle read(int codigo) {
+        for (FacturaDetalle factura : lista) {
             if (factura.getCodigo() == codigo) {
                 return factura;
             }
@@ -34,7 +34,7 @@ public class ControladorFactura {
         return null;
     }
 
-    public void update(Factura objeto) {
+    public void update(FacturaDetalle objeto) {
         if (lista.contains(objeto)) {
             lista.remove(objeto);
             lista.add(objeto);
@@ -42,7 +42,7 @@ public class ControladorFactura {
     }
 
     public void delete(int codigo) {
-        for (Factura factura : lista) {
+        for (FacturaDetalle factura : lista) {
             if (factura.getCodigo() == codigo) {
                 lista.remove(factura);
                 break;
@@ -50,7 +50,7 @@ public class ControladorFactura {
         }
     }
 
-    public Set<Factura> getLista() {
+    public Set<FacturaDetalle> getLista() {
 
         return lista;
 
