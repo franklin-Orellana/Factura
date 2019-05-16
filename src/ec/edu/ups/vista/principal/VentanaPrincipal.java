@@ -3,10 +3,10 @@ package ec.edu.ups.vista.principal;
 import ec.edu.ups.controladores.ControladorCliente;
 import ec.edu.ups.controladores.ControladorProducto;
 import ec.edu.ups.controladores.ControladorFactura;
-import ec.edu.ups.vista.factura.VentanaCrearFactura;
 import ec.edu.ups.modelo.Factura;
 import ec.edu.ups.modelo.Cliente;
 import ec.edu.ups.modelo.Producto;
+import ec.edu.ups.vista.factura.VentanaFactura;
 import ec.edu.ups.vista.cliente.VentanaActualizarCliente;
 import ec.edu.ups.vista.cliente.VentanaBuscarCliente;
 import ec.edu.ups.vista.cliente.VentanaCrearCliente;
@@ -400,7 +400,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void FcrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FcrearActionPerformed
         // TODO add your handling code here:
-        VentanaCrearFactura ventanaFactura = new VentanaCrearFactura(controladorFactura);
+        VentanaFactura ventanaFactura = new VentanaFactura(controladorFactura,controladorCliente, controladorProducto);
         ventanaFactura.setVisible(true);
         desktopPane.add(ventanaFactura);
     }//GEN-LAST:event_FcrearActionPerformed
