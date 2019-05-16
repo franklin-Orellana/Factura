@@ -1,44 +1,54 @@
 package ec.edu.ups.vista.principal;
 
 import ec.edu.ups.controladores.ControladorCliente;
-import ec.edu.ups.controladores.ControladorProducto;
-import ec.edu.ups.controladores.ControladorFactura;
+import ec.edu.ups.controladores.ControladorFacturaCabecera;
 import ec.edu.ups.controladores.ControladorFacturaDetalle;
-import ec.edu.ups.modelo.Factura;
-import ec.edu.ups.modelo.Cliente;
-import ec.edu.ups.modelo.Producto;
-import ec.edu.ups.vista.factura.VentanaFactura;
+import ec.edu.ups.controladores.ControladorProducto;
 import ec.edu.ups.vista.cliente.VentanaActualizarCliente;
 import ec.edu.ups.vista.cliente.VentanaBuscarCliente;
 import ec.edu.ups.vista.cliente.VentanaCrearCliente;
 import ec.edu.ups.vista.cliente.VentanaEliminarCliente;
 import ec.edu.ups.vista.cliente.VentanaListarCliente;
+import ec.edu.ups.vista.factura.VentanaFactura;
 import ec.edu.ups.vista.producto.VentanaActualizarProducto;
 import ec.edu.ups.vista.producto.VentanaBuscarProducto;
 import ec.edu.ups.vista.producto.VentanaCrearProducto;
 import ec.edu.ups.vista.producto.VentanaEliminarProducto;
+import ec.edu.ups.vista.producto.VentanaActualizarProducto;
 import ec.edu.ups.vista.producto.VentanaListaProducto;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class VentanaPrincipal extends javax.swing.JFrame {
 
+    private VentanaCrearCliente crearCliente;
+    private VentanaActualizarCliente actualizarCliente;
+    private VentanaEliminarCliente eliminarCliente;
+    private VentanaBuscarCliente buscarCliente;
+    private VentanaFactura factura;
+    private VentanaActualizarProducto actualizarProducto;
+    private VentanaCrearProducto crearProducto;
+    private VentanaBuscarProducto buscarProducto;
+    private VentanaEliminarProducto eliminarProducto;
+    private VentanaListarCliente listarCliente;
+    private VentanaListaProducto listaProducto;
     private ControladorCliente controladorCliente;
     private ControladorProducto controladorProducto;
-    private ControladorFactura controladorFactura;
+    private ControladorFacturaCabecera controladorFactura;
+    private ControladorFacturaDetalle controladorFacturaDetalle;
     private Locale localizacion;
     private ResourceBundle mensajes;
-    private ControladorFacturaDetalle controladorFacturaDetalle;
-
+    
     public VentanaPrincipal() {
         initComponents();
-        setLocationRelativeTo(null);
-        controladorFactura = new ControladorFactura();
         controladorCliente = new ControladorCliente();
-        controladorProducto = new ControladorProducto();        
+        controladorProducto = new ControladorProducto();   
+        controladorFactura = new ControladorFacturaCabecera();
+        controladorFacturaDetalle = new ControladorFacturaDetalle();
+        System.out.println("Localizacion por defecto: "+Locale.getDefault().getLanguage());
         //System.out.println("localizacion por defecto: "+Locale.getDefault().getLanguage());
-        localizacion = new Locale("en", "US");
-        Locale.setDefault(localizacion);
+        //localizacion = new Locale("en", "US");
+        //Locale.setDefault(localizacion);
         
         //System.out.println(""+Locale.getDefault().getLanguage());
         //mensajes = ResourceBundle.getBundle("ec.edu.ups.idimas.mensajes",Locale.getDefault());
@@ -73,8 +83,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         Peliminar.setText(mensajes.getString("menu.item.Eliminar"));
         Feliminar.setText(mensajes.getString("menu.item.Eliminar"));
         
-        //Iingles.setText(mensajes.getString(""));
-        //Iespanol.setText(mensajes.getString(""));
+        Iingles.setText(mensajes.getString("menu.item.Espanol"));
+        Iespanol.setText(mensajes.getString("menu.item.Ingles"));
         
     }
 
@@ -332,79 +342,104 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void CactualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CactualizarActionPerformed
-       VentanaActualizarCliente actualizarCliente= new VentanaActualizarCliente(controladorCliente);
+        if(actualizarCliente == null || ! actualizarCliente.isVisible()){
+        actualizarCliente = new VentanaActualizarCliente(controladorCliente);
         actualizarCliente.setVisible(true);
         desktopPane.add(actualizarCliente);
+        //VentanaActualizarCliente.cambiarIdioma(localizacion);
+        }      
     }//GEN-LAST:event_CactualizarActionPerformed
 
     private void CcrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CcrearActionPerformed
         // TODO add your handling code here:
-        VentanaCrearCliente crearCliente = new VentanaCrearCliente(controladorCliente);
+        if(crearCliente == null || ! crearCliente.isVisible()){
+        crearCliente = new VentanaCrearCliente(controladorCliente);
         crearCliente.setVisible(true);
         desktopPane.add(crearCliente);
+        //VentanaCrearCliente.cambiarIdioma(ocalizacion);
+        }      
+        
     }//GEN-LAST:event_CcrearActionPerformed
 
     private void PcrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PcrearActionPerformed
         // TODO add your handling code here:
-        VentanaCrearProducto crearProducto = new VentanaCrearProducto(controladorProducto);
+        if(crearProducto == null || ! crearProducto.isVisible()){
+        crearProducto = new VentanaCrearProducto(controladorProducto);
         crearProducto.setVisible(true);
         desktopPane.add(crearProducto);
+        }
     }//GEN-LAST:event_PcrearActionPerformed
 
     private void ClistarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClistarActionPerformed
         // TODO add your handling code here:
-        VentanaListarCliente listarCliente= new VentanaListarCliente(controladorCliente);
+        if(listarCliente==null||!listarCliente.isVisible()){
+        listarCliente= new VentanaListarCliente(controladorCliente);
         listarCliente.setVisible(true);
         desktopPane.add(listarCliente);
+        }
     }//GEN-LAST:event_ClistarActionPerformed
 
     private void CbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CbuscarActionPerformed
         // TODO add your handling code here:
-        VentanaBuscarCliente buscarCliente= new VentanaBuscarCliente(controladorCliente);
+        if(buscarCliente==null||!buscarCliente.isVisible()){
+        buscarCliente= new VentanaBuscarCliente(controladorCliente);
         buscarCliente.setVisible(true);
         desktopPane.add(buscarCliente);
+        }
     }//GEN-LAST:event_CbuscarActionPerformed
 
     private void CeliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CeliminarActionPerformed
         // TODO add your handling code here:
-        VentanaEliminarCliente eliminarCliente= new VentanaEliminarCliente(controladorCliente);
+        if(eliminarCliente==null||!eliminarCliente.isVisible()){
+        eliminarCliente= new VentanaEliminarCliente(controladorCliente);
         eliminarCliente.setVisible(true);
         desktopPane.add(eliminarCliente);
+        }
     }//GEN-LAST:event_CeliminarActionPerformed
 
     private void PlistarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PlistarActionPerformed
         // TODO add your handling code here:
-        VentanaListaProducto listaProducto = new VentanaListaProducto(controladorProducto);
+        if(listaProducto ==null||!listaProducto.isVisible()){
+        listaProducto = new VentanaListaProducto(controladorProducto);
         listaProducto.setVisible(true);
         desktopPane.add(listaProducto);
+        }
     }//GEN-LAST:event_PlistarActionPerformed
 
     private void PbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PbuscarActionPerformed
         // TODO add your handling code here:
-        VentanaBuscarProducto buscarProducto = new VentanaBuscarProducto(controladorProducto);
+        if(buscarProducto==null||!buscarProducto.isVisible()){
+        buscarProducto = new VentanaBuscarProducto(controladorProducto);
         buscarProducto.setVisible(true);
         desktopPane.add(buscarProducto);
+        }
     }//GEN-LAST:event_PbuscarActionPerformed
 
     private void PactualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PactualizarActionPerformed
         // TODO add your handling code here:
-        VentanaActualizarProducto actualizarProducto = new VentanaActualizarProducto(controladorProducto);
+        if(actualizarProducto==null||!actualizarProducto.isVisible()){
+        actualizarProducto = new VentanaActualizarProducto(controladorProducto);
         actualizarProducto.setVisible(true);
         desktopPane.add(actualizarProducto);
+        }
     }//GEN-LAST:event_PactualizarActionPerformed
 
     private void PeliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PeliminarActionPerformed
         // TODO add your handling code here:
-        VentanaEliminarProducto eliminarProducto = new VentanaEliminarProducto(controladorProducto);
+        if(eliminarProducto==null||!eliminarProducto.isVisible()){
+        eliminarProducto = new VentanaEliminarProducto(controladorProducto);
         eliminarProducto.setVisible(true);
         desktopPane.add(eliminarProducto);
+        }
     }//GEN-LAST:event_PeliminarActionPerformed
 
     private void FcrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FcrearActionPerformed
         // TODO add your handling code here:
-        VentanaFactura ventanaFactura = new VentanaFactura(controladorFactura, controladorFacturaDetalle, controladorCliente, controladorProducto);
-        ventanaFactura.setVisible(true);
-        desktopPane.add(ventanaFactura);
+        if(factura == null||!factura.isVisible()){
+        factura = new VentanaFactura(controladorFactura, controladorCliente, controladorProducto, controladorFacturaDetalle);
+        factura.setVisible(true);
+        desktopPane.add(factura);
+        }
     }//GEN-LAST:event_FcrearActionPerformed
 
     private void FlistarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FlistarActionPerformed

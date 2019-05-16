@@ -8,7 +8,7 @@ public class ControladorCliente {
 
     private Set<Cliente> lista;
     private int codigo;
-    private int contador;
+ 
     
     public ControladorCliente() {
         lista = new HashSet<>();

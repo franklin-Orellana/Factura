@@ -9,9 +9,10 @@ import ec.edu.ups.controladores.ControladorProducto;
 import ec.edu.ups.modelo.FacturaDetalle;
 import ec.edu.ups.modelo.Producto;
 import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
 import java.util.Set;
 import javax.swing.JOptionPane;
-import java.util.ResourceBundle;
 public class VentanaFacturaDetalle extends javax.swing.JInternalFrame {
 
     /**
@@ -20,8 +21,10 @@ public class VentanaFacturaDetalle extends javax.swing.JInternalFrame {
     private ControladorProducto controladorProducto;
     private ControladorFacturaDetalle controladorFacturaDetalle;
     private Set<Producto> lista;
-    double sub;
+    double subTotal;
     int indice = 0;
+    private Locale localizacion;
+    private static ResourceBundle mensajes;
     
     public VentanaFacturaDetalle(ControladorFacturaDetalle controladorFacturaDetalle, ControladorProducto controladorProducto) {
         initComponents();
@@ -32,22 +35,22 @@ public class VentanaFacturaDetalle extends javax.swing.JInternalFrame {
         for(Producto producto: lista){
             buscar.addItem(producto.getNombre());
         }
-    Buscar();
+    productoBuscado();
     }
     
-    public void Buscar(){
-        Producto producto = BProducto();
+    public void productoBuscado(){
+        Producto producto = buscarProducto();
         PUnitario.setText(String.valueOf(producto.getPrecio()));
     }
     
-    public Producto BProducto(){
-        Producto produc = new Producto();
+    public Producto buscarProducto(){
+        Producto l = new Producto();
         for(Producto producto : lista){
         if(buscar.getSelectedItem().toString().equalsIgnoreCase(producto.getNombre())){    
-        produc = producto;
+        l = producto;
         }
     }
-           return produc;
+           return l;
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -118,6 +121,7 @@ public class VentanaFacturaDetalle extends javax.swing.JInternalFrame {
 
         Añadir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/crear.png"))); // NOI18N
         Añadir.setToolTipText("");
+        Añadir.setActionCommand("Añadir Producto");
         Añadir.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         Añadir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -127,6 +131,7 @@ public class VentanaFacturaDetalle extends javax.swing.JInternalFrame {
 
         Calcular.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/CALCULAR.png"))); // NOI18N
         Calcular.setToolTipText("");
+        Calcular.setActionCommand("Calcular Sub Total");
         Calcular.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         Calcular.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -175,9 +180,9 @@ public class VentanaFacturaDetalle extends javax.swing.JInternalFrame {
                     .addComponent(producto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(buscar, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Punitario, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(PUnitario))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(Punitario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(PUnitario, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(FCantidad, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
@@ -192,8 +197,11 @@ public class VentanaFacturaDetalle extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(subtotal1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Añadir, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
+
+        Añadir.getAccessibleContext().setAccessibleName("Añadir Producto");
+        Calcular.getAccessibleContext().setAccessibleName("Calcular Sub Total");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -208,8 +216,8 @@ public class VentanaFacturaDetalle extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -217,7 +225,7 @@ public class VentanaFacturaDetalle extends javax.swing.JInternalFrame {
 
     private void AñadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AñadirActionPerformed
         // TODO add your handling code here:
-        Producto producto = BProducto();
+        Producto producto = buscarProducto();
         FacturaDetalle facDetalle = new FacturaDetalle();
         facDetalle.setPrecio(Double.parseDouble(PUnitario.getText()));
         facDetalle.setCantidad(Integer.parseInt(FCantidad.getText()));
@@ -226,6 +234,7 @@ public class VentanaFacturaDetalle extends javax.swing.JInternalFrame {
         facDetalle.setCodfac(VentanaFactura.codigoFac);
         controladorFacturaDetalle.crear(facDetalle);
         Object[] fila = {facDetalle.getCodigo(),
+                         producto.getNombre(),
                          facDetalle.getPrecio(),
                          facDetalle.getCantidad(),
                          facDetalle.getSubtotal()};
@@ -239,14 +248,18 @@ public class VentanaFacturaDetalle extends javax.swing.JInternalFrame {
 
     private void CalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CalcularActionPerformed
         // TODO add your handling code here:
-        sub = (Double.parseDouble(PUnitario.getText()))*(Double.parseDouble(FCantidad.getText()));
-        FSubtotal.setText(String.valueOf(sub));
+        if(PUnitario.getText().isEmpty()){            
+        }else if(FCantidad.getText().isEmpty()){
+        }else{
+        subTotal = (Double.parseDouble(PUnitario.getText()))*(Double.parseDouble(FCantidad.getText()));
+        FSubtotal.setText(String.valueOf(subTotal));
         Añadir.setEnabled(true);
+        }        
     }//GEN-LAST:event_CalcularActionPerformed
 
     private void buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarActionPerformed
         // TODO add your handling code here:
-        BProducto();
+        buscarProducto();
     }//GEN-LAST:event_buscarActionPerformed
 
 
@@ -257,13 +270,13 @@ public class VentanaFacturaDetalle extends javax.swing.JInternalFrame {
     private javax.swing.JTextField FCodigo;
     private javax.swing.JTextField FSubtotal;
     private javax.swing.JTextField PUnitario;
-    private javax.swing.JLabel Punitario;
+    public static javax.swing.JLabel Punitario;
     private javax.swing.JComboBox<String> buscar;
-    private javax.swing.JLabel cantidad;
-    private javax.swing.JLabel codigo;
+    public static javax.swing.JLabel cantidad;
+    public static javax.swing.JLabel codigo;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel producto;
-    private javax.swing.JLabel subtotal;
+    public static javax.swing.JLabel producto;
+    public static javax.swing.JLabel subtotal;
     private javax.swing.JLabel subtotal1;
     // End of variables declaration//GEN-END:variables
 }

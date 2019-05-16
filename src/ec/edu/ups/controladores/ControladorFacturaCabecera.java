@@ -4,12 +4,12 @@ import ec.edu.ups.modelo.Factura;
 import java.util.HashSet;
 import java.util.Set;
 
-public class ControladorFactura {
+public class ControladorFacturaCabecera {
 
     private Set<Factura> lista;
     private int codigo;
 
-    public ControladorFactura() {
+    public ControladorFacturaCabecera() {
         lista = new HashSet<>();
         codigo = 1;
     }

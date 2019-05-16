@@ -7,9 +7,14 @@ package ec.edu.ups.vista.cliente;
 
 import ec.edu.ups.controladores.ControladorCliente;
 import ec.edu.ups.modelo.Cliente;
+import java.util.Locale;
 import javax.swing.JOptionPane;
 
 public class VentanaActualizarCliente extends javax.swing.JInternalFrame {
+
+    public static void cambiarIdioma(Locale localizacion) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
     private ControladorCliente controladorCliente;
 
