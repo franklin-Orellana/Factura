@@ -3,6 +3,7 @@ package ec.edu.ups.vista.principal;
 import ec.edu.ups.controladores.ControladorCliente;
 import ec.edu.ups.controladores.ControladorProducto;
 import ec.edu.ups.controladores.ControladorFactura;
+import ec.edu.ups.controladores.ControladorFacturaDetalle;
 import ec.edu.ups.modelo.Factura;
 import ec.edu.ups.modelo.Cliente;
 import ec.edu.ups.modelo.Producto;
@@ -27,6 +28,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private ControladorFactura controladorFactura;
     private Locale localizacion;
     private ResourceBundle mensajes;
+    private ControladorFacturaDetalle controladorFacturaDetalle;
 
     public VentanaPrincipal() {
         initComponents();
@@ -400,7 +402,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void FcrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FcrearActionPerformed
         // TODO add your handling code here:
-        VentanaFactura ventanaFactura = new VentanaFactura(controladorFactura,controladorCliente, controladorProducto);
+        VentanaFactura ventanaFactura = new VentanaFactura(controladorFactura, controladorFacturaDetalle, controladorCliente, controladorProducto);
         ventanaFactura.setVisible(true);
         desktopPane.add(ventanaFactura);
     }//GEN-LAST:event_FcrearActionPerformed
@@ -492,7 +494,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem Peliminar;
     private javax.swing.JMenuItem Plistar;
     private javax.swing.JMenu Producto;
-    private javax.swing.JDesktopPane desktopPane;
+    public static javax.swing.JDesktopPane desktopPane;
     private javax.swing.JMenuBar menuBar;
     // End of variables declaration//GEN-END:variables
 

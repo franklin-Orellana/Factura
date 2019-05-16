@@ -4,19 +4,25 @@
  * and open the template in the editor.
  */
 package ec.edu.ups.vista.factura;
+import ec.edu.ups.controladores.ControladorCliente;
 import ec.edu.ups.controladores.ControladorFactura;
 import ec.edu.ups.controladores.ControladorFacturaDetalle;
-import ec.edu.ups.controladores.ControladorCliente;
 import ec.edu.ups.controladores.ControladorProducto;
-import ec.edu.ups.modelo.FacturaDetalle;
-import ec.edu.ups.modelo.Factura;
 import ec.edu.ups.modelo.Cliente;
+import ec.edu.ups.modelo.Factura;
+import ec.edu.ups.modelo.FacturaDetalle;
+import ec.edu.ups.vista.principal.VentanaPrincipal;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
+import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
-
 /**
  *
  * @author Fernanda
@@ -30,11 +36,15 @@ public class VentanaFactura extends javax.swing.JInternalFrame {
     private ControladorFacturaDetalle controladorFacturaDetalle;
     private ControladorCliente controladorCliente;
     private ControladorProducto controladorProducto;
+    private VentanaFacturaDetalle ventanaFacturaDetalle;
     Cliente cliente;
+    public static DefaultTableModel Tabla;
+    public static int codigoFac=0;
     private double subtotal1;
     private double iva1;
     private double total1;
-    public VentanaFactura(ControladorFactura controladorFactura, ControladorCliente controladorCliente, ControladorProducto controladorProducto) {
+    
+    public VentanaFactura(ControladorFactura controladorFactura,ControladorFacturaDetalle controladorFacturaDetalle, ControladorCliente controladorCliente, ControladorProducto controladorProducto) {
         initComponents();
         this.controladorFactura = controladorFactura;
         this.controladorFacturaDetalle = controladorFacturaDetalle;
@@ -42,7 +52,20 @@ public class VentanaFactura extends javax.swing.JInternalFrame {
         this.controladorProducto= controladorProducto;
         Fecha.setText(fechaActual());
         NumFac.setText(String.valueOf(this.controladorFactura.getCodigo()));
+        Tabla = new DefaultTableModel();
+        
+        Object[] columnas = {"Codigo",
+                             "Nombre",
+                             "Precio",
+                             "Precio Uni",
+                             "Cantidad",
+                             "SubTotal"};
+    
+        Tabla.setColumnIdentifiers(columnas);
+        TablaProducto.setModel(Tabla);
     }
+    
+    
 
     public static String fechaActual() {
         Date fecha = new Date();
@@ -356,6 +379,11 @@ public class VentanaFactura extends javax.swing.JInternalFrame {
 
         BuscarProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/BS.png"))); // NOI18N
         BuscarProducto.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        BuscarProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BuscarProductoActionPerformed(evt);
+            }
+        });
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
@@ -482,7 +510,7 @@ public class VentanaFactura extends javax.swing.JInternalFrame {
 
     private void BuscarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarClienteActionPerformed
         // TODO add your handling code here:
-         String cedula=Cedula.getText();
+        String cedula=Cedula.getText();
         Cliente buscarCliente=controladorCliente.readCedula(cedula);
         Nombre.setText(buscarCliente.getNombre());
         Apellido.setText(buscarCliente.getNombre());
@@ -521,11 +549,18 @@ public class VentanaFactura extends javax.swing.JInternalFrame {
         Crear.setEnabled(true);
     }//GEN-LAST:event_CalcularActionPerformed
 
+    private void BuscarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarProductoActionPerformed
+        // TODO add your handling code here:
+        VentanaFacturaDetalle agregar = new VentanaFacturaDetalle(controladorFacturaDetalle, controladorProducto);
+        VentanaPrincipal.desktopPane.add(agregar);
+        agregar.setVisible(true);
+    }//GEN-LAST:event_BuscarProductoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Apellido;
     private javax.swing.JButton BuscarCliente;
-    private javax.swing.JButton BuscarProducto;
+    public static javax.swing.JButton BuscarProducto;
     private javax.swing.JButton Calcular;
     private javax.swing.JButton Cancelar;
     private javax.swing.JTextField Cedula;

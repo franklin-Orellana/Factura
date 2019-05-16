@@ -8,6 +8,8 @@ public class VentanaCrearProducto extends javax.swing.JInternalFrame {
     private ControladorProducto controladorProducto;
     public VentanaCrearProducto(ControladorProducto controladorProducto) {
         initComponents();
+        this.controladorProducto = controladorProducto;
+        Ccodigo.setText(String.valueOf(this.controladorProducto.getCodigo()));
     }
 
     @SuppressWarnings("unchecked")
