@@ -304,7 +304,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         Iingles.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
         Iingles.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/vista/principal/idioma.png"))); // NOI18N
         Iingles.setMnemonic('t');
-        Iingles.setText("Ingles");
+        Iingles.setText("Español");
         Iingles.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 IinglesActionPerformed(evt);
@@ -315,7 +315,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         Iespanol.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.CTRL_MASK));
         Iespanol.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/vista/principal/idioma.png"))); // NOI18N
         Iespanol.setMnemonic('y');
-        Iespanol.setText("Español");
+        Iespanol.setText("Ingles");
         Iespanol.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 IespanolActionPerformed(evt);
@@ -346,7 +346,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         actualizarCliente = new VentanaActualizarCliente(controladorCliente);
         actualizarCliente.setVisible(true);
         desktopPane.add(actualizarCliente);
-        //VentanaActualizarCliente.cambiarIdioma(localizacion);
+        VentanaActualizarCliente.cambiarIdioma(localizacion);
         }      
     }//GEN-LAST:event_CactualizarActionPerformed
 
@@ -356,7 +356,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         crearCliente = new VentanaCrearCliente(controladorCliente);
         crearCliente.setVisible(true);
         desktopPane.add(crearCliente);
-        //VentanaCrearCliente.cambiarIdioma(ocalizacion);
+        VentanaCrearCliente.cambiarIdioma(localizacion);
         }      
         
     }//GEN-LAST:event_CcrearActionPerformed
@@ -367,6 +367,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         crearProducto = new VentanaCrearProducto(controladorProducto);
         crearProducto.setVisible(true);
         desktopPane.add(crearProducto);
+        VentanaCrearProducto.cambiarIdioma(localizacion);
         }
     }//GEN-LAST:event_PcrearActionPerformed
 
@@ -376,6 +377,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         listarCliente= new VentanaListarCliente(controladorCliente);
         listarCliente.setVisible(true);
         desktopPane.add(listarCliente);
+        VentanaListarCliente.cambiarIdioma(localizacion);
         }
     }//GEN-LAST:event_ClistarActionPerformed
 
@@ -385,6 +387,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         buscarCliente= new VentanaBuscarCliente(controladorCliente);
         buscarCliente.setVisible(true);
         desktopPane.add(buscarCliente);
+        VentanaBuscarCliente.cambiarIdioma(localizacion);
         }
     }//GEN-LAST:event_CbuscarActionPerformed
 
@@ -394,6 +397,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         eliminarCliente= new VentanaEliminarCliente(controladorCliente);
         eliminarCliente.setVisible(true);
         desktopPane.add(eliminarCliente);
+        VentanaEliminarCliente.cambiarIdioma(localizacion);
         }
     }//GEN-LAST:event_CeliminarActionPerformed
 
@@ -403,6 +407,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         listaProducto = new VentanaListaProducto(controladorProducto);
         listaProducto.setVisible(true);
         desktopPane.add(listaProducto);
+        VentanaListaProducto.cambiarIdioma(localizacion);
         }
     }//GEN-LAST:event_PlistarActionPerformed
 
@@ -412,6 +417,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         buscarProducto = new VentanaBuscarProducto(controladorProducto);
         buscarProducto.setVisible(true);
         desktopPane.add(buscarProducto);
+        VentanaBuscarProducto.cambiarIdioma(localizacion);
         }
     }//GEN-LAST:event_PbuscarActionPerformed
 
@@ -421,6 +427,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         actualizarProducto = new VentanaActualizarProducto(controladorProducto);
         actualizarProducto.setVisible(true);
         desktopPane.add(actualizarProducto);
+        VentanaActualizarProducto.cambiarIdioma(localizacion);
         }
     }//GEN-LAST:event_PactualizarActionPerformed
 
@@ -430,6 +437,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         eliminarProducto = new VentanaEliminarProducto(controladorProducto);
         eliminarProducto.setVisible(true);
         desktopPane.add(eliminarProducto);
+        VentanaEliminarProducto.cambiarIdioma(localizacion);
         }
     }//GEN-LAST:event_PeliminarActionPerformed
 
@@ -439,6 +447,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         factura = new VentanaFactura(controladorFactura, controladorCliente, controladorProducto, controladorFacturaDetalle);
         factura.setVisible(true);
         desktopPane.add(factura);
+        VentanaFactura.cambiarIdioma(localizacion);
         }
     }//GEN-LAST:event_FcrearActionPerformed
 

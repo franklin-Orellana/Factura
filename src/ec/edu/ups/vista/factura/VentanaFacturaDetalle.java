@@ -37,6 +37,15 @@ public class VentanaFacturaDetalle extends javax.swing.JInternalFrame {
         }
     productoBuscado();
     }
+    public static void cambiarIdioma(Locale localizacion) {
+        mensajes = ResourceBundle.getBundle("ec.edu.ups.idiomas.mensajes", Locale.getDefault());
+        codigo.setText(mensajes.getString("cliente.codigo"));
+        producto.setText(mensajes.getString("menu.producto"));
+        Punitario.setText(mensajes.getString("precio.uni"));
+        cantidad.setText(mensajes.getString("cantidad"));
+        subtotal.setText(mensajes.getString("subtotal"));
+        anadirpro.setText(mensajes.getString("anadir"));
+    }
     
     public void productoBuscado(){
         Producto producto = buscarProducto();
@@ -71,7 +80,7 @@ public class VentanaFacturaDetalle extends javax.swing.JInternalFrame {
         subtotal = new javax.swing.JLabel();
         Punitario = new javax.swing.JLabel();
         PUnitario = new javax.swing.JTextField();
-        subtotal1 = new javax.swing.JLabel();
+        anadirpro = new javax.swing.JLabel();
         buscar = new javax.swing.JComboBox<>();
         Añadir = new javax.swing.JButton();
         Calcular = new javax.swing.JButton();
@@ -111,9 +120,9 @@ public class VentanaFacturaDetalle extends javax.swing.JInternalFrame {
         PUnitario.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         PUnitario.setEnabled(false);
 
-        subtotal1.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
-        subtotal1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        subtotal1.setText("AÑADIR PRODUCTO");
+        anadirpro.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+        anadirpro.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        anadirpro.setText("AÑADIR PRODUCTO");
 
         buscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -165,7 +174,7 @@ public class VentanaFacturaDetalle extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(Calcular, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(subtotal1)
+                        .addComponent(anadirpro)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(Añadir, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -197,7 +206,7 @@ public class VentanaFacturaDetalle extends javax.swing.JInternalFrame {
                         .addComponent(subtotal, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(subtotal1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(anadirpro, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Añadir, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
@@ -273,12 +282,12 @@ public class VentanaFacturaDetalle extends javax.swing.JInternalFrame {
     private javax.swing.JTextField FSubtotal;
     private javax.swing.JTextField PUnitario;
     public static javax.swing.JLabel Punitario;
+    public static javax.swing.JLabel anadirpro;
     private javax.swing.JComboBox<String> buscar;
     public static javax.swing.JLabel cantidad;
     public static javax.swing.JLabel codigo;
     private javax.swing.JPanel jPanel1;
     public static javax.swing.JLabel producto;
     public static javax.swing.JLabel subtotal;
-    private javax.swing.JLabel subtotal1;
     // End of variables declaration//GEN-END:variables
 }

@@ -268,7 +268,7 @@
                   <Image iconType="3" name="/ec/edu/ups/vista/principal/idioma.png"/>
                 </Property>
                 <Property name="mnemonic" type="int" value="116"/>
-                <Property name="text" type="java.lang.String" value="Ingles"/>
+                <Property name="text" type="java.lang.String" value="Espa&#xf1;ol"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="IinglesActionPerformed"/>
@@ -283,7 +283,7 @@
                   <Image iconType="3" name="/ec/edu/ups/vista/principal/idioma.png"/>
                 </Property>
                 <Property name="mnemonic" type="int" value="121"/>
-                <Property name="text" type="java.lang.String" value="Espa&#xf1;ol"/>
+                <Property name="text" type="java.lang.String" value="Ingles"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="IespanolActionPerformed"/>
