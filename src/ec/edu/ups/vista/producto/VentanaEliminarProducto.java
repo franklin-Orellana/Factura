@@ -6,17 +6,29 @@
 package ec.edu.ups.vista.producto;
 import ec.edu.ups.controladores.ControladorProducto;
 import ec.edu.ups.modelo.Producto;
+import java.util.Locale;
+import java.util.ResourceBundle;
 import javax.swing.JOptionPane;
 
 public class VentanaEliminarProducto extends javax.swing.JInternalFrame {
 
     private ControladorProducto controladorProducto;
-    
+    private Locale localizacion;
+    private static ResourceBundle mensajes;
     public VentanaEliminarProducto(ControladorProducto controladorProducto) {
         initComponents();
         this.controladorProducto = controladorProducto;
     }
-
+public static void cambiarIdioma(Locale localizacion){
+        mensajes = ResourceBundle.getBundle("ec.edu.ups.idiomas.mensajes",Locale.getDefault());
+        EC.setText(mensajes.getString("cliente.codigo"));
+        EN.setText(mensajes.getString("cliente.nombre"));
+        EP.setText(mensajes.getString("producto.precio"));
+        BC.setText(mensajes.getString("boton.cancelar"));
+        BE.setText(mensajes.getString("boton.eliminar"));
+        BB.setText(mensajes.getString("boton.buscar"));
+        MEP.setText(mensajes.getString("MEP"));
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -26,52 +38,52 @@ public class VentanaEliminarProducto extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel3 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
+        EN = new javax.swing.JLabel();
+        BB = new javax.swing.JButton();
         Enombre = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
+        EP = new javax.swing.JLabel();
         Eprecio = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        BE = new javax.swing.JButton();
+        BC = new javax.swing.JButton();
+        MEP = new javax.swing.JLabel();
+        EC = new javax.swing.JLabel();
         Ecodigo = new javax.swing.JTextField();
 
         setClosable(true);
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel3.setText("NOMBRE");
+        EN.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        EN.setText("NOMBRE");
 
-        jButton3.setText("BUSCAR");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        BB.setText("BUSCAR");
+        BB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                BBActionPerformed(evt);
             }
         });
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel5.setText("PRECIO");
+        EP.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        EP.setText("PRECIO");
 
-        jButton1.setText("ELIMINAR");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        BE.setText("ELIMINAR");
+        BE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                BEActionPerformed(evt);
             }
         });
 
-        jButton2.setText("CANCELAR");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        BC.setText("CANCELAR");
+        BC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                BCActionPerformed(evt);
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("ELIMINAR PRODUCTO");
+        MEP.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        MEP.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        MEP.setText("ELIMINAR PRODUCTO");
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel6.setText("CODIGO");
+        EC.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        EC.setText("CODIGO");
 
         Ecodigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -86,65 +98,65 @@ public class VentanaEliminarProducto extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel1)
+                    .addComponent(MEP)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addComponent(jButton1)
+                            .addComponent(BE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton2))
+                            .addComponent(BC))
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(EN, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(EP, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGap(38, 38, 38)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(Enombre, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(Eprecio, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(EC, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(Ecodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(18, 18, 18)
-                .addComponent(jButton3)
+                .addComponent(BB)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(MEP, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Ecodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3))
+                    .addComponent(EC, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BB))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Enombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
+                    .addComponent(EN))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
+                    .addComponent(EP)
                     .addComponent(Eprecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(BE)
+                    .addComponent(BC))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void BBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BBActionPerformed
         // TODO add your handling code here:
         int codigo = Integer.parseInt(Ecodigo.getText());
         Producto buscarProducto = controladorProducto.read(codigo);
         Enombre.setText(buscarProducto.getNombre());
         Eprecio.setText(String.valueOf(buscarProducto.getPrecio()));
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_BBActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void BEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BEActionPerformed
         // TODO add your handling code here:
         int codigo = Integer.parseInt(Ecodigo.getText());
         controladorProducto.delete(codigo);
@@ -152,12 +164,12 @@ public class VentanaEliminarProducto extends javax.swing.JInternalFrame {
         Ecodigo.setText("");
         Enombre.setText("");
         Eprecio.setText("");
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_BEActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void BCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BCActionPerformed
         // TODO add your handling code here:
         this.dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_BCActionPerformed
 
     private void EcodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EcodigoActionPerformed
         // TODO add your handling code here:
@@ -165,15 +177,15 @@ public class VentanaEliminarProducto extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public static javax.swing.JButton BB;
+    public static javax.swing.JButton BC;
+    public static javax.swing.JButton BE;
+    public static javax.swing.JLabel EC;
+    public static javax.swing.JLabel EN;
+    public static javax.swing.JLabel EP;
     private javax.swing.JTextField Ecodigo;
     private javax.swing.JTextField Enombre;
     private javax.swing.JTextField Eprecio;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
+    public static javax.swing.JLabel MEP;
     // End of variables declaration//GEN-END:variables
 }
