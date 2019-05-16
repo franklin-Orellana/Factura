@@ -76,6 +76,8 @@ public class VentanaFacturaDetalle extends javax.swing.JInternalFrame {
         Añadir = new javax.swing.JButton();
         Calcular = new javax.swing.JButton();
 
+        setClosable(true);
+
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
         codigo.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N

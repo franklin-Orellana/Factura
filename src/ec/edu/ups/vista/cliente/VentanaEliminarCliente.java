@@ -3,14 +3,32 @@ package ec.edu.ups.vista.cliente;
 import ec.edu.ups.controladores.ControladorCliente;
 import ec.edu.ups.modelo.Cliente;
 import javax.swing.JOptionPane;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 public class VentanaEliminarCliente extends javax.swing.JInternalFrame {
 
-private ControladorCliente controladorCliente;
+    private Locale localizacion;
+    private static ResourceBundle mensajes;
+    private ControladorCliente controladorCliente;
 
     public VentanaEliminarCliente(ControladorCliente controladorCliente) {
         initComponents();
         this.controladorCliente = controladorCliente;
+    }
+
+    public static void cambiarIdioma(Locale localizacion) {
+        mensajes = ResourceBundle.getBundle("ec.edu.ups.idiomas.mensajes", Locale.getDefault());
+        ECcodigo.setText(mensajes.getString("cliente.codigo"));
+        ECnombre.setText(mensajes.getString("cliente.nombre"));
+        ECapellido.setText(mensajes.getString("cliente.apellido"));
+        ECcedula.setText(mensajes.getString("cliente.cedula"));
+        ECdireccion.setText(mensajes.getString("cliente.direccion"));
+        ECtelefono.setText(mensajes.getString("cliente.telefono"));
+        Beliminar.setText(mensajes.getString("boton.eliminar"));
+        Bcancelar.setText(mensajes.getString("boton.cancelar"));
+        Bbuscar.setText(mensajes.getString("boton.buscar"));
+        MEC.setText(mensajes.getString("MCC"));
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -21,39 +39,39 @@ private ControladorCliente controladorCliente;
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton3 = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        Bcancelar = new javax.swing.JButton();
+        ECcodigo = new javax.swing.JLabel();
+        ECcedula = new javax.swing.JLabel();
+        MEC = new javax.swing.JLabel();
         Ecodigo = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
+        Beliminar = new javax.swing.JButton();
+        ECnombre = new javax.swing.JLabel();
         Ecedula = new javax.swing.JTextField();
         Enombre = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
+        ECdireccion = new javax.swing.JLabel();
         Edireccion = new javax.swing.JTextField();
         Etelefono = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        ECtelefono = new javax.swing.JLabel();
+        Bbuscar = new javax.swing.JButton();
         Eapellido = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
+        ECapellido = new javax.swing.JLabel();
 
-        jButton3.setText("CANCELAR");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        Bcancelar.setText("CANCELAR");
+        Bcancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                BcancelarActionPerformed(evt);
             }
         });
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel6.setText("CODIGO");
+        ECcodigo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        ECcodigo.setText("CODIGO");
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel2.setText("CEDULA");
+        ECcedula.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        ECcedula.setText("CEDULA");
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("ELIMINAR CLIENTE");
+        MEC.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        MEC.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        MEC.setText("ELIMINAR CLIENTE");
 
         Ecodigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -61,32 +79,32 @@ private ControladorCliente controladorCliente;
             }
         });
 
-        jButton2.setText("ELIMINAR");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        Beliminar.setText("ELIMINAR");
+        Beliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                BeliminarActionPerformed(evt);
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel3.setText("NOMBRE");
+        ECnombre.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        ECnombre.setText("NOMBRE");
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel4.setText("DIRECCION");
-        jLabel4.setToolTipText("");
+        ECdireccion.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        ECdireccion.setText("DIRECCION");
+        ECdireccion.setToolTipText("");
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel5.setText("TELEFONO");
+        ECtelefono.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        ECtelefono.setText("TELEFONO");
 
-        jButton1.setText("BUSCAR");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        Bbuscar.setText("BUSCAR");
+        Bbuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                BbuscarActionPerformed(evt);
             }
         });
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel7.setText("APELLIDO");
+        ECapellido.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        ECapellido.setText("APELLIDO");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -98,14 +116,14 @@ private ControladorCliente controladorCliente;
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(ECcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(Ecodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(ECnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(ECcedula, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(ECapellido, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(44, 44, 44)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(Enombre, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -113,18 +131,18 @@ private ControladorCliente controladorCliente;
                                     .addComponent(Eapellido, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addGap(49, 49, 49)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(MEC, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
-                        .addComponent(jButton1))
+                        .addComponent(Bbuscar))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(layout.createSequentialGroup()
-                            .addComponent(jButton2)
+                            .addComponent(Beliminar)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton3))
+                            .addComponent(Bcancelar))
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel4)
-                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(ECdireccion)
+                                .addComponent(ECtelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGap(38, 38, 38)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(Edireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -135,52 +153,52 @@ private ControladorCliente controladorCliente;
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(MEC, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Ecodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(ECcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Bbuscar))
                 .addGap(17, 17, 17)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Ecedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(ECcedula))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Enombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
+                    .addComponent(ECnombre))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Eapellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
+                    .addComponent(ECapellido))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
+                    .addComponent(ECdireccion)
                     .addComponent(Edireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
+                    .addComponent(ECtelefono)
                     .addComponent(Etelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
-                    .addComponent(jButton2))
+                    .addComponent(Bcancelar)
+                    .addComponent(Beliminar))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void BcancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BcancelarActionPerformed
         // TODO add your handling code here:
         this.dispose();
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_BcancelarActionPerformed
 
     private void EcodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EcodigoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_EcodigoActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void BeliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BeliminarActionPerformed
         // TODO add your handling code here:
         int codigo = Integer.parseInt(Ecodigo.getText());
         controladorCliente.delete(codigo);
@@ -191,9 +209,9 @@ private ControladorCliente controladorCliente;
         Eapellido.setText("");
         Edireccion.setText("");
         Etelefono.setText("");
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_BeliminarActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void BbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BbuscarActionPerformed
         // TODO add your handling code here:
         int codigo = Integer.parseInt(Ecodigo.getText());
         Cliente buscarCliente = controladorCliente.read(codigo);
@@ -202,25 +220,25 @@ private ControladorCliente controladorCliente;
         Eapellido.setText(buscarCliente.getApellido());
         Edireccion.setText(buscarCliente.getDireccion());
         Etelefono.setText(buscarCliente.getTelefono());
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_BbuscarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public static javax.swing.JButton Bbuscar;
+    public static javax.swing.JButton Bcancelar;
+    public static javax.swing.JButton Beliminar;
+    public static javax.swing.JLabel ECapellido;
+    public static javax.swing.JLabel ECcedula;
+    public static javax.swing.JLabel ECcodigo;
+    public static javax.swing.JLabel ECdireccion;
+    public static javax.swing.JLabel ECnombre;
+    public static javax.swing.JLabel ECtelefono;
     private javax.swing.JTextField Eapellido;
     private javax.swing.JTextField Ecedula;
     private javax.swing.JTextField Ecodigo;
     private javax.swing.JTextField Edireccion;
     private javax.swing.JTextField Enombre;
     private javax.swing.JTextField Etelefono;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
+    public static javax.swing.JLabel MEC;
     // End of variables declaration//GEN-END:variables
 }

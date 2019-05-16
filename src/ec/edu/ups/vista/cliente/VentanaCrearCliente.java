@@ -3,15 +3,32 @@ package ec.edu.ups.vista.cliente;
 import ec.edu.ups.controladores.ControladorCliente;
 import ec.edu.ups.modelo.Cliente;
 import javax.swing.JOptionPane;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 public class VentanaCrearCliente extends javax.swing.JInternalFrame {
 
     private ControladorCliente controladorCliente;
+    private Locale localizacion;
+    private static ResourceBundle mensajes;
 
     public VentanaCrearCliente(ControladorCliente controladorCliente) {
         initComponents();
         this.controladorCliente = controladorCliente;
         Ccodigo.setText(String.valueOf(this.controladorCliente.getCodigo()));
+    }
+
+    public static void cambiarIdioma(Locale localizacion) {
+        mensajes = ResourceBundle.getBundle("ec.edu.ups.idiomas.mensajes", Locale.getDefault());
+        CCcodigo.setText(mensajes.getString("cliente.codigo"));
+        CCnombre.setText(mensajes.getString("cliente.nombre"));
+        CCapellido.setText(mensajes.getString("cliente.apellido"));
+        CCcedula.setText(mensajes.getString("cliente.cedula"));
+        CCdireccion.setText(mensajes.getString("cliente.direccion"));
+        CCtelefono.setText(mensajes.getString("cliente.telefono"));
+        Bguardar.setText(mensajes.getString("boton.buscar"));
+        Bcancelar.setText(mensajes.getString("boton.cancelar"));
+        MCC.setText(mensajes.getString("MCC"));
     }
 
     @SuppressWarnings("unchecked")
@@ -22,43 +39,43 @@ public class VentanaCrearCliente extends javax.swing.JInternalFrame {
         Cnombre = new javax.swing.JTextField();
         Cdireccion = new javax.swing.JTextField();
         Ctelefono = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        Bguardar = new javax.swing.JButton();
+        Bcancelar = new javax.swing.JButton();
+        MCC = new javax.swing.JLabel();
+        CCcodigo = new javax.swing.JLabel();
+        CCcedula = new javax.swing.JLabel();
         Ccodigo = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        CCnombre = new javax.swing.JLabel();
+        CCdireccion = new javax.swing.JLabel();
+        CCtelefono = new javax.swing.JLabel();
         Capellido = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
+        CCapellido = new javax.swing.JLabel();
 
         setClosable(true);
 
-        jButton1.setText("GUARDAR");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        Bguardar.setText("GUARDAR");
+        Bguardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                BguardarActionPerformed(evt);
             }
         });
 
-        jButton2.setText("CANCELAR");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        Bcancelar.setText("CANCELAR");
+        Bcancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                BcancelarActionPerformed(evt);
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("CREAR CLIENTE");
+        MCC.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        MCC.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        MCC.setText("CREAR CLIENTE");
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel6.setText("CODIGO");
+        CCcodigo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        CCcodigo.setText("CODIGO");
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel2.setText("CEDULA");
+        CCcedula.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        CCcedula.setText("CEDULA");
 
         Ccodigo.setEnabled(false);
         Ccodigo.addActionListener(new java.awt.event.ActionListener() {
@@ -67,18 +84,18 @@ public class VentanaCrearCliente extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel3.setText("NOMBRE");
+        CCnombre.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        CCnombre.setText("NOMBRE");
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel4.setText("DIRECCION");
-        jLabel4.setToolTipText("");
+        CCdireccion.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        CCdireccion.setText("DIRECCION");
+        CCdireccion.setToolTipText("");
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel5.setText("TELEFONO");
+        CCtelefono.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        CCtelefono.setText("TELEFONO");
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel7.setText("APELLIDO");
+        CCapellido.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        CCapellido.setText("APELLIDO");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -88,18 +105,18 @@ public class VentanaCrearCliente extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(CCcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(Ccodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
                             .addGap(49, 49, 49)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(MCC, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createSequentialGroup()
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(CCnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(CCcedula, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(CCapellido, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGap(44, 44, 44)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(Cnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -110,13 +127,13 @@ public class VentanaCrearCliente extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addComponent(Bguardar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2))
+                        .addComponent(Bcancelar))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(CCdireccion)
+                            .addComponent(CCtelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(38, 38, 38)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Cdireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -127,42 +144,42 @@ public class VentanaCrearCliente extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(MCC, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Ccodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(CCcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Ccedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(CCcedula))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Cnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
+                    .addComponent(CCnombre))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Capellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
+                    .addComponent(CCapellido))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
+                    .addComponent(CCdireccion)
                     .addComponent(Cdireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
+                    .addComponent(CCtelefono)
                     .addComponent(Ctelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(Bguardar)
+                    .addComponent(Bcancelar))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void BguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BguardarActionPerformed
         // TODO add your handling code here:
         Cliente crearCliente = new Cliente();
         crearCliente.setCedula(Ccedula.getText());
@@ -171,21 +188,21 @@ public class VentanaCrearCliente extends javax.swing.JInternalFrame {
         crearCliente.setTelefono(Ctelefono.getText());
         crearCliente.setDireccion(Cdireccion.getText());
         controladorCliente.crear(crearCliente);
-        JOptionPane.showMessageDialog(this,"EL CLIENTE SE A CREADO"); 
-        
+        JOptionPane.showMessageDialog(this, "EL CLIENTE SE A CREADO");
+
         Ccodigo.setText(String.valueOf(this.controladorCliente.getCodigo()));
         Ccedula.setText("");
         Cnombre.setText("");
         Capellido.setText("");
         Ctelefono.setText("");
         Cdireccion.setText("");
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_BguardarActionPerformed
+
+    private void BcancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BcancelarActionPerformed
         // TODO add your handling code here:
         this.dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_BcancelarActionPerformed
 
     private void CcodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CcodigoActionPerformed
         // TODO add your handling code here:
@@ -193,20 +210,20 @@ public class VentanaCrearCliente extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public static javax.swing.JButton Bcancelar;
+    public static javax.swing.JButton Bguardar;
+    public static javax.swing.JLabel CCapellido;
+    public static javax.swing.JLabel CCcedula;
+    public static javax.swing.JLabel CCcodigo;
+    public static javax.swing.JLabel CCdireccion;
+    public static javax.swing.JLabel CCnombre;
+    public static javax.swing.JLabel CCtelefono;
     private javax.swing.JTextField Capellido;
     private javax.swing.JTextField Ccedula;
     private javax.swing.JTextField Ccodigo;
     private javax.swing.JTextField Cdireccion;
     private javax.swing.JTextField Cnombre;
     private javax.swing.JTextField Ctelefono;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
+    public static javax.swing.JLabel MCC;
     // End of variables declaration//GEN-END:variables
 }

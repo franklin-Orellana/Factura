@@ -6,12 +6,16 @@
 package ec.edu.ups.vista.cliente;
 import ec.edu.ups.controladores.ControladorCliente;
 import ec.edu.ups.modelo.Cliente;
+import java.util.Locale;
+import java.util.ResourceBundle;
 import java.util.Set;
 import javax.swing.table.DefaultTableModel;
 
 public class VentanaListarCliente extends javax.swing.JInternalFrame {
-
+    private Locale localizacion;
+    private static ResourceBundle mensajes;
     private ControladorCliente controladorCliente;
+    public static DefaultTableModel modelo;
     public VentanaListarCliente(ControladorCliente controladorCliente) {
         initComponents();
     this.controladorCliente = controladorCliente;
@@ -32,6 +36,11 @@ public class VentanaListarCliente extends javax.swing.JInternalFrame {
         }
     }
 
+     public static void cambiarIdioma(Locale localizacion){
+        mensajes=ResourceBundle.getBundle("ec.edu.ups.idiomas.mensajes",Locale.getDefault());
+        Object[] columnas = {mensajes.getString("cliente.codigo"),mensajes.getString("cliente.nombre"),mensajes.getString("cliente.apellido"), mensajes.getString("cliente.cedula"),mensajes.getString("cliente.direccion"), mensajes.getString("cliente.telefono")};
+        modelo.setColumnIdentifiers(columnas);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.

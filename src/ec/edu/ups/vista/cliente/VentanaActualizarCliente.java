@@ -8,19 +8,32 @@ package ec.edu.ups.vista.cliente;
 import ec.edu.ups.controladores.ControladorCliente;
 import ec.edu.ups.modelo.Cliente;
 import java.util.Locale;
+import java.util.ResourceBundle;
 import javax.swing.JOptionPane;
 
 public class VentanaActualizarCliente extends javax.swing.JInternalFrame {
 
-    public static void cambiarIdioma(Locale localizacion) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
     private ControladorCliente controladorCliente;
+    private Locale localizacion;
+    private static ResourceBundle mensajes;
 
     public VentanaActualizarCliente(ControladorCliente controladorCliente) {
         initComponents();
         this.controladorCliente = controladorCliente;
+    }
+
+    public static void cambiarIdioma(Locale localizacion){
+        mensajes = ResourceBundle.getBundle("ec.edu.ups.idiomas.mensajes",Locale.getDefault());
+        ACcodigo.setText(mensajes.getString("cliente.codigo"));
+        ACnombre.setText(mensajes.getString("cliente.nombre"));
+        ACapellido.setText(mensajes.getString("cliente.apellido"));
+        ACcedula.setText(mensajes.getString("cliente.cedula"));
+        ACdireccion.setText(mensajes.getString("cliente.direccion"));
+        ACtelefono.setText(mensajes.getString("cliente.telefono"));
+        ACactualizar.setText(mensajes.getString("boton.actualizar"));
+        ACbuscar.setText(mensajes.getString("boton.buscar"));
+        ACcancelar.setText(mensajes.getString("boton.cancelar"));
+        
     }
 
     /**
@@ -32,30 +45,30 @@ public class VentanaActualizarCliente extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel6 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        ACcodigo = new javax.swing.JLabel();
+        ACcedula = new javax.swing.JLabel();
         Acodigo = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
+        ACnombre = new javax.swing.JLabel();
         Acedula = new javax.swing.JTextField();
         Anombre = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
+        ACdireccion = new javax.swing.JLabel();
         Adireccion = new javax.swing.JTextField();
         Atelefono = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        ACtelefono = new javax.swing.JLabel();
+        ACbuscar = new javax.swing.JButton();
+        ACcancelar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        ACactualizar = new javax.swing.JButton();
         Aapellido = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
+        ACapellido = new javax.swing.JLabel();
 
         setClosable(true);
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel6.setText("CODIGO");
+        ACcodigo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        ACcodigo.setText("CODIGO");
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel2.setText("CEDULA");
+        ACcedula.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        ACcedula.setText("CEDULA");
 
         Acodigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -63,27 +76,27 @@ public class VentanaActualizarCliente extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel3.setText("NOMBRE");
+        ACnombre.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        ACnombre.setText("NOMBRE");
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel4.setText("DIRECCION");
-        jLabel4.setToolTipText("");
+        ACdireccion.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        ACdireccion.setText("DIRECCION");
+        ACdireccion.setToolTipText("");
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel5.setText("TELEFONO");
+        ACtelefono.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        ACtelefono.setText("TELEFONO");
 
-        jButton1.setText("BUSCAR");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        ACbuscar.setText("BUSCAR");
+        ACbuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                ACbuscarActionPerformed(evt);
             }
         });
 
-        jButton3.setText("CANCELAR");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        ACcancelar.setText("CANCELAR");
+        ACcancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                ACcancelarActionPerformed(evt);
             }
         });
 
@@ -91,15 +104,15 @@ public class VentanaActualizarCliente extends javax.swing.JInternalFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("ACTUALIZAR CLIENTE");
 
-        jButton2.setText("ACTUALIZAR");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        ACactualizar.setText("ACTUALIZAR");
+        ACactualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                ACactualizarActionPerformed(evt);
             }
         });
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel7.setText("APELLIDO");
+        ACapellido.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        ACapellido.setText("APELLIDO");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -111,14 +124,14 @@ public class VentanaActualizarCliente extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(ACcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(Acodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(ACnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(ACcedula, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(ACapellido, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(44, 44, 44)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(Anombre, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -128,16 +141,16 @@ public class VentanaActualizarCliente extends javax.swing.JInternalFrame {
                                 .addGap(49, 49, 49)
                                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
-                        .addComponent(jButton1))
+                        .addComponent(ACbuscar))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(layout.createSequentialGroup()
-                            .addComponent(jButton2)
+                            .addComponent(ACactualizar)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton3))
+                            .addComponent(ACcancelar))
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel4)
-                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(ACdireccion)
+                                .addComponent(ACtelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGap(38, 38, 38)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(Adireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -152,32 +165,32 @@ public class VentanaActualizarCliente extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Acodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(ACcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ACbuscar))
                 .addGap(17, 17, 17)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Acedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(ACcedula))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Anombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
+                    .addComponent(ACnombre))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Aapellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
+                    .addComponent(ACapellido))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
+                    .addComponent(ACdireccion)
                     .addComponent(Adireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
+                    .addComponent(ACtelefono)
                     .addComponent(Atelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
-                    .addComponent(jButton2))
+                    .addComponent(ACcancelar)
+                    .addComponent(ACactualizar))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -188,7 +201,7 @@ public class VentanaActualizarCliente extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_AcodigoActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void ACbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ACbuscarActionPerformed
         // TODO add your handling code here:
         int codigo = Integer.parseInt(Acodigo.getText());
         Cliente buscarCliente = controladorCliente.read(codigo);
@@ -197,14 +210,14 @@ public class VentanaActualizarCliente extends javax.swing.JInternalFrame {
         Aapellido.setText(buscarCliente.getApellido());
         Adireccion.setText(buscarCliente.getDireccion());
         Atelefono.setText(buscarCliente.getTelefono());
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_ACbuscarActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void ACcancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ACcancelarActionPerformed
         // TODO add your handling code here:
         this.dispose();
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_ACcancelarActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void ACactualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ACactualizarActionPerformed
         // TODO add your handling code here:
         Cliente actualizarCliente = new Cliente();
         actualizarCliente.setCodigo(Integer.parseInt(Acodigo.getText()));
@@ -221,25 +234,25 @@ public class VentanaActualizarCliente extends javax.swing.JInternalFrame {
         Aapellido.setText("");
         Adireccion.setText("");
         Atelefono.setText("");
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_ACactualizarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public static javax.swing.JButton ACactualizar;
+    public static javax.swing.JLabel ACapellido;
+    public static javax.swing.JButton ACbuscar;
+    public static javax.swing.JButton ACcancelar;
+    public static javax.swing.JLabel ACcedula;
+    public static javax.swing.JLabel ACcodigo;
+    public static javax.swing.JLabel ACdireccion;
+    public static javax.swing.JLabel ACnombre;
+    public static javax.swing.JLabel ACtelefono;
     private javax.swing.JTextField Aapellido;
     private javax.swing.JTextField Acedula;
     private javax.swing.JTextField Acodigo;
     private javax.swing.JTextField Adireccion;
     private javax.swing.JTextField Anombre;
     private javax.swing.JTextField Atelefono;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     // End of variables declaration//GEN-END:variables
 }
